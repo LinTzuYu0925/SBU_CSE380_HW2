@@ -509,6 +509,17 @@ export default class Homework1_Scene extends Scene {
 			// Extract the size of the viewport
 			let viewportSize = this.viewport.getHalfSize().scaled(2);
 
+			// Assign the color to the asteroid
+			switch(Math.floor(Math.random() *  6)) {
+				case (0) : asteroid.setColor(Color.WHITE); break;
+				case (1) : asteroid.setColor(Color.GREEN); break;
+				case (2) : asteroid.setColor(Color.BLUE); break;
+				case (3) : asteroid.setColor(Color.YELLOW); break;
+				case (4) : asteroid.setColor(Color.MAGENTA); break;
+				case (5) : asteroid.setColor(Color.CYAN); break;
+				default : asteroid.setColor(Color.RED); break;
+			}
+
 			// Loop on position until we're clear of the player
 			asteroid.position = RandUtils.randVec(0, viewportSize.x, 0, viewportSize.y);
 			while(asteroid.position.distanceTo(this.player.position) < this.MIN_SPAWN_DISTANCE){
