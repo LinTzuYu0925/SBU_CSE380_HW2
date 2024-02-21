@@ -83,6 +83,8 @@ export default class Homework1_Scene extends Scene {
 		this.load.image("space", "hw2_assets/sprites/space.png");
 
 		/* ##### YOUR CODE GOES BELOW THIS LINE ##### */
+		// Load in the fleet ship spritesheet
+		this.load.spritesheet("fleet_ship", "hw2_assets/spritesheets/fleet_ship.json");
 	}
 
 	/*
@@ -480,7 +482,7 @@ export default class Homework1_Scene extends Scene {
 		}
 	}
 
-	// HOMEWORK 2 - TODO
+	// HOMEWORK 2 - TODO DONE
 	/**
 	 * This function spawns a new asteroid from our object pool.
 	 * 
