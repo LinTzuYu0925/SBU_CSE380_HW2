@@ -73,6 +73,10 @@ export default class GradientCircleShaderType extends RectShaderType {
 		const u_Transform = gl.getUniformLocation(program, "u_Transform");
 		gl.uniformMatrix4fv(u_Transform, false, transformation.toArray());
 
+		// Pass the color matrix to our shader
+		const u_color = gl.getUniformLocation(program, "u_Color"); // Get the location of the color uniform in the shader program
+		gl.uniform4f(u_color, options.color.r, options.color.g, options.color.b, options.color.a);
+
 		// Draw the quad
 		gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 	}
