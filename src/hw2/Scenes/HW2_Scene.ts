@@ -448,7 +448,7 @@ export default class Homework1_Scene extends Scene {
 					if(ship.visible &&
 						!ship.animation.isPlaying("explode") && 
 						Homework1_Scene.checkAABBtoCircleCollision(<AABB>ship.collisionShape, <Circle>asteroid.collisionShape)
-					){
+					) {
 						// Kill asteroid
 						asteroid.visible = false;
 						this.numAsteroids -= 1;
@@ -476,7 +476,27 @@ export default class Homework1_Scene extends Scene {
 				// If the asteroid is spawned in and it overlaps the player
 				if(asteroid.visible && Homework1_Scene.checkAABBtoCircleCollision(<AABB>this.player.collisionShape, <Circle>asteroid.collisionShape)){
 					// Put your code here:
+					// 1) Kill asteroid
+					asteroid.visible = false;
+					this.numAsteroids -= 1;
 
+					// 2) The player must be damaged. This has two parts to it.
+					//		i) The player shield, which is tracked here, must decrease, and the player should become invincible.
+					this.playerShield -= 1;
+					this.playerinvincible = true;
+					//		ii) We must send an event to the EventQueue saying that the player has been damaged. You'll have to go 
+	 				//			into the SpaceshipPlayerController class and make sure it is subscribed to these types of events.
+				 	//			For event data, we must include the shield level after the player takes damage. This data is
+					//			important for knowing when the player dies. You'll know yours is working if you go to a game over
+				 	//			screen once you lose all of your health.
+					this.emitter.fireEvent(Homework2Event.PLAYER_DAMAGE, {shield: this.playerShield});
+					
+					// 3) The text of the GUI must be updated.
+					this.asteroidsLabel.text = `Asteroids: ${this.numAsteroids}`;
+					this.shieldsLabel.text = `Shield: ${this.playerShield}`;
+
+					// 4) We must increase the player's score, or numAsteroidsDestroyed
+					this.numAsteroidsDestroyed += 1;
 				}
 			}
 		}
@@ -595,7 +615,7 @@ export default class Homework1_Scene extends Scene {
 		}
 	}
 
-	// HOMEWORK 2 - TODO
+	// HOMEWORK 2 - TODO DONE
 	/**
 	 * This method checks whether or not an AABB collision shape and a Circle collision shape
 	 * overlap with each other.
