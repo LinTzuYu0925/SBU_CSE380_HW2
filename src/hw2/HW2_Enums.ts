@@ -16,7 +16,7 @@ export enum Homework2Shaders {
 	GRADIENT_CIRCLE = "GRADIENT_CIRCLE"
 }
 
-// HOMEWORK 2 - TODO
+// HOMEWORK 2 - TODO DONE
 /*
  * Make sure these match the animation names for your own animated sprite.
  */
@@ -26,7 +26,7 @@ export enum Homework2Animations {
 	SHIP_DIE = "DIE"
 }
 
-// HOMEWORK 2 - TODO
+// HOMEWORK 2 - TODO DONE
 /*
  * Make sure this is the key you give to your loaded spritesheet.
  */
