@@ -1,6 +1,6 @@
 {
-    "name": "space_ship",
-    "spriteSheetImage": "space_ship.png",
+    "name": "fleet_ship",
+    "spriteSheetImage": "fleet_ship.png",
     "spriteWidth": 128,
     "spriteHeight": 128,
     "leftBuffer": 0,

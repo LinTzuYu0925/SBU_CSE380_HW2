@@ -66,7 +66,7 @@ export default class Homework1_Scene extends Scene {
 	private ASTEROID_SPEED: number = 100;
 	private ASTEROID_SPEED_INC: number = 10;
 
-	// HOMEWORK 2 - TODO
+	// HOMEWORK 2 - TODO DONE
 	/*
 		You'll want to be sure to load in your own sprite here
 	*/

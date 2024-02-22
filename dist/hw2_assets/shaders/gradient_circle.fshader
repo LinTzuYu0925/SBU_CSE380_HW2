@@ -3,7 +3,7 @@ precision mediump float;
 varying vec4 v_Position;
 uniform vec4 u_color;
 
-// HOMEWORK 2 - TODO
+// HOMEWORK 2 - TODO DONE
 /*
 	The fragment shader is where pixel colors are decided.
 	You'll have to modify this code to make the gradient_circles have a variable color
