@@ -539,7 +539,7 @@ export default class Homework1_Scene extends Scene {
 		}
 	}
 
-	// HOMEWORK 2 - TODO
+	// HOMEWORK 2 - TODO DONE
 	/**
 	 * This function takes in a GameNode that may be out of bounds of the viewport and
 	 * modifies its position so that it wraps around the viewport from one side to the other.
@@ -622,7 +622,38 @@ export default class Homework1_Scene extends Scene {
 	 */
 	static checkAABBtoCircleCollision(aabb: AABB, circle: Circle): boolean {
 		// Your code goes here:
-		return false;
+		// if the circle center is in the aabb
+		if (Math.abs(circle.center.x - aabb.center.x) <= aabb.halfSize.x && Math.abs(circle.center.y - aabb.center.y) <= aabb.halfSize.y) {
+			return true;
+		}
+
+		// find the closest point on the aabb to the cneter of circle
+		let closest_point: Vec2 = new Vec2(0, 0);
+		let center_connection: Vec2 = new Vec2((circle.center.x - aabb.center.x), (circle.center.y - aabb.center.y));
+		// determine the closest point is on the vertical axis or horizontal axis
+		if (aabb.halfSize.y / aabb.halfSize.x > Math.abs(center_connection.y / center_connection.x)) {
+			// Which means the closest_point is on the vertical axis
+			closest_point.x = 	aabb.center.x + 
+								((center_connection.x > 0) ? aabb.halfSize.x : -aabb.halfSize.x);
+			closest_point.y = 	aabb.center.y +
+								((center_connection.x > 0) ? aabb.halfSize.x : -aabb.halfSize.x) * (center_connection.y / center_connection.x);
+		} else if (aabb.halfSize.y / aabb.halfSize.x < Math.abs(center_connection.y / center_connection.x)) {
+			// Which means the closest_point is on the horizontal axis
+			closest_point.x = 	aabb.center.x +
+								((center_connection.y > 0) ? aabb.halfSize.y : -aabb.halfSize.y) * (center_connection.x / center_connection.y);
+			closest_point.y = 	aabb.center.y +
+								((center_connection.y > 0) ? aabb.halfSize.y : -aabb.halfSize.y);
+		} else {
+			// Which means the closest_point is on the corner of aabb
+			closest_point.x = 	aabb.center.x + 
+								((center_connection.x > 0) ? aabb.halfSize.x : -aabb.halfSize.x);
+			closest_point.y = 	aabb.center.y +
+								((center_connection.y > 0) ? aabb.halfSize.y : -aabb.halfSize.y);
+		}
+
+		// If the point to the center of the circle <= radius, then it is a collision
+		let dis = Math.sqrt(Math.pow(circle.center.x - closest_point.x, 2) + Math.pow(circle.center.y - closest_point.y, 2));
+		return dis <= circle.radius;
 	}
 
 }

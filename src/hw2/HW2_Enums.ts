@@ -23,7 +23,7 @@ export enum Homework2Shaders {
 export enum Homework2Animations {
 	SHIP_IDLE = "IDLE",
 	SHIP_BOOST = "BOOST",
-	SHIP_DIE = "DIE"
+	SHIP_DIE = "DYING"
 }
 
 // HOMEWORK 2 - TODO DONE
